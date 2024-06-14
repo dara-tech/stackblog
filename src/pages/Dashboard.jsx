@@ -27,7 +27,7 @@ const Dashboard = () => {
     <div className='w-full'>
       <Stats dt={data} />
 
-      <div className='w-full py-8'>
+      <div className='w-full'>
         <p className='py-5 text-base font-medium'>
           View Stats for last 28 days
         </p>

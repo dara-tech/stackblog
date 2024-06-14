@@ -25,14 +25,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full bg-transparent flex flex-row md:px-6 py-4 md:py-5 justify-between">
+    <div className=" p-8 w-full fixed bg-transparent flex flex-row  py-5 justify-between ">
       {user?.token && (
         <div className="block lg:hidden">
           <MobileDrawer theme={theme} />
         </div>
       )}
 
-      <div className="flex flex-row gap-2">
+      <div className=" flex-row items-center md:flex hidden">
         <Link
           to="/"
           className="text-red-600 hover:text-red-500 shadow-md p-2 rounded-md hover:shadow-gray-300 hover:shadow-sm dark:bg-gray-800"
@@ -57,14 +57,15 @@ const Navbar = () => {
         >
           <FaTwitterSquare />
         </Link>
+        
       </div>
 
       <Logo />
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-row items-center gapx-6 gap-2">
         <Switch />
         {user?.token ? (
-          <UserMenu user={user?.user} theme={theme} />
+          <UserMenu user={user.user} theme={theme} />
         ) : (
           <Link to="/auth" onClick={handleLogin}>
             <Button variant="outline" className={clsx(theme ? "text-white" : "text-black")}>

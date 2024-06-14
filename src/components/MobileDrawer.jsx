@@ -19,13 +19,13 @@ const MobileDrawer = ({ theme }) => {
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
       >
         <Sidebar close={close} />
-        <div className="w-full mt-10 ">
+        <div className="w-fit mt-10 ">
           <UserMenu user={user?.user} theme={theme} />
         </div>
       </Drawer>
 
-      <Button variant="" onClick={open}>
-        <BiMenu className="text-xl ring-2 text-blue-700 " />
+      <Button variant="outline" onClick={open}>
+        <BiMenu className="" />
       </Button>
     </>
   );

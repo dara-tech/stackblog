@@ -18,7 +18,7 @@ function Layout() {
   return user?.token ? (
     <div className='w-full h-screen'>
       <Navbar />
-      <div className='w-full h-full flex pt-3 '>
+      <div className='w-full h-full flex pt-20  '>
         <div className='hidden lg:flex '>
           <Sidebar />
         </div>

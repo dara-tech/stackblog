@@ -38,14 +38,14 @@ const StartPage = () => {
   return (
     <div
       className={clsx(
-        "w-full h-screen px-0 ",
+        "w-full h-screen px-0 absolute ",
         theme
           ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#302943] via-slate-900 to-black"
           : "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#fff] via-blue-50 to-white"
       )}
     >
       <Navbar />
-      <div className="w-full h-full fixed flex flex-col items-center justify-center md:pt-24 gap-8 md:gap-6 px-4">
+      <div className="w-full h-full flex flex-col items-center justify-center md:pt-24 px-4">
         <div className="w-full 2xl:max-w-3xl flex flex-col items-center justify-center gap-y-10 2xl:-mt-20">
           <span
             className={clsx(
