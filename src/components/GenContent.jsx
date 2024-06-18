@@ -6,15 +6,15 @@ import EditorComponent from "./EditorComponent";
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
-
+ 
 const GenContent = ({ title, setEditorContent }) => {
   const [generatedContent, setGeneratedContent] = useState("");
   const [error, setError] = useState(null);
   const [context, setContext] = useState("");
   const [loading, setLoading] = useState(false);
-  const [generationCount, setGenerationCount] = useState(0);
+  const [generationCount, setGenerationCount] = useState(0); 
 
-  useEffect(() => {
+  useEffect(() => { 
     if (title) {
       generateContent();
     }

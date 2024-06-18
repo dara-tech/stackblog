@@ -38,7 +38,7 @@ const GenerateTitlesComponent = ({ topic, onSelectTitle }) => {
       setError("Please enter a topic before generating titles.");
       return;
     }
-
+ 
     setLoading(true);
     setError(null);
     try {
@@ -48,7 +48,7 @@ const GenerateTitlesComponent = ({ topic, onSelectTitle }) => {
       }`;
       const result = await model.generateContent(prompt);
       const response = result.response;
-      const text = await response.text();
+      const text = await response.text(); 
 
       let titles = text.split("\n").filter(title => title.trim() !== ""); // Split and filter non-empty titles
       setGeneratedTitles(titles);
