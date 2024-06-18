@@ -9,10 +9,11 @@ import Analytics from "./pages/Analytics";
 import Followers from "./pages/Followers";
 import Contents from "./pages/Content";
 import WritePost from "./pages/WritePost";
+import { useTranslation } from 'react-i18next';
+import './i18n/i18n'; // Import i18n configuration
 
 function Layout() {
   const { user } = useStore((state) => state);
-
   const location = useLocation();
 
   return user?.token ? (
@@ -34,11 +35,18 @@ function Layout() {
 }
 
 function App() {
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    localStorage.setItem('language', language);
+  };
+
   return (
     <main className='w-full min-h-screen'>
       <Routes>
         <Route element={<Layout />}>
-          <Route index psth='/' element={<Navigate to='/dashboard' />} />
+          <Route index path='/' element={<Navigate to='/dashboard' />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/analytics' element={<Analytics />} />
           <Route path='/followers' element={<Followers />} />

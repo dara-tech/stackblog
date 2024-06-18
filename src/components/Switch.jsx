@@ -8,11 +8,11 @@ const Switch = () => {
 
   return (
     <div
-      className={`switch ${isDarkMode ? "light" : "dark"} font-extrabold ring-2 rounded-full p-1 ms-2`}
+      className={`switch ${isDarkMode ? "light" : "dark"}flex flex-col item-center p-1 h-8 w-8 ring-2 rounded-full`}
       onClick={toggleColorScheme}
     >
-      <div className={`ball ${isDarkMode ? "dark" : "light"} `}></div>
-      {isDarkMode ? <IconSun stroke={0.5} /> : <IconMoon stroke={0.5} />}
+      <div className={`ball ${isDarkMode ? "dark" : "light"}  `}></div>
+      {isDarkMode ? <IconSun stroke={1.5} /> : <IconMoon stroke={1.5} />}
     </div>
   );
 };

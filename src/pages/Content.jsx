@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Menu,
@@ -8,8 +9,7 @@ import {
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import useStore from "../store";
 import { useDisclosure } from "@mantine/hooks";
-import { useEffect, useState } from "react";
-import { useAction, useContent, useDeletePost } from "../hooks/post-hook";
+import { useContent, useDeletePost, useAction } from "../hooks/post-hook";
 import { formatNumber, updateURL } from "../utils";
 import clsx from "clsx";
 import { Toaster, toast } from "sonner";
@@ -21,10 +21,10 @@ import Loading from "../components/Loading";
 import ConfirmDialog from "../components/ConfirmDialog";
 import useCommentStore from "../store/commentStore";
 import Comments from "../components/Comments";
+import { useTranslation } from "react-i18next";
 
 const Contents = () => {
   const { colorScheme } = useMantineColorScheme();
-
   const location = useLocation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -42,6 +42,7 @@ const Contents = () => {
   const [type, setType] = useState(null);
   const [status, setStatus] = useState(null);
   const [page, setPage] = useState(searchParams.get("page") || 1);
+  const { t } = useTranslation();
 
   const theme = colorScheme === "dark";
 
@@ -59,10 +60,8 @@ const Contents = () => {
 
   const handlePerformAction = (val, id, status) => {
     setSelected(id);
-
     setType(val);
     setStatus(status);
-
     open();
   };
 
@@ -74,8 +73,7 @@ const Contents = () => {
       case "status":
         useActions.mutate({ id: selected, status });
         break;
-        default:
-       
+      default:
     }
 
     fetchContent();
@@ -95,7 +93,7 @@ const Contents = () => {
             theme ? "text-white" : "text-black"
           )}
         >
-          Contents ({" "}
+          {t("Content")} ({" "}
           <span>
             {data?.data?.length * data?.page +
               " of " +
@@ -108,13 +106,13 @@ const Contents = () => {
         <Table highlightOnHover withTableBorder>
           <Table.Thead>
             <Table.Tr>
-              <Table.Th>Post Title</Table.Th>
-              <Table.Th>Category</Table.Th>
-              <Table.Th>Views</Table.Th>
-              <Table.Th>Comments</Table.Th>
-              <Table.Th>Post Date</Table.Th>
-              <Table.Th>Status</Table.Th>
-              <Table.Th>Action</Table.Th>
+              <Table.Th>{t("Post Title")}</Table.Th>
+              <Table.Th>{t("Category")}</Table.Th>
+              <Table.Th>{t("Views")}</Table.Th>
+              <Table.Th>{t("Comments")}</Table.Th>
+              <Table.Th>{t("Post Date")}</Table.Th>
+              <Table.Th>{t("Status")}</Table.Th>
+              <Table.Th>{t("Action")}</Table.Th>
             </Table.Tr>
           </Table.Thead>
 
@@ -129,7 +127,7 @@ const Contents = () => {
                     <img
                       src={el?.img}
                       alt={el?.title}
-                      className='w-10 h-10 rounded-full object-conver'
+                      className='w-10 h-10 rounded-full object-cover'
                     />
 
                     <p className='text-base'>{el?.title}</p>

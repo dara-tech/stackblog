@@ -14,6 +14,7 @@ import MobileDrawer from "./MobileDrawer";
 import UserMenu from "./UserMenu";
 import clsx from "clsx";
 
+
 const Navbar = () => {
   const { colorScheme } = useMantineColorScheme();
   const { user, signInModal, setSignInModal } = useStore();
@@ -25,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" p-8 w-full fixed bg-transparent flex flex-row  py-5 justify-between ">
+    <div className=" p-8 w-full fixed bg-transparent flex flex-row  py-5 justify-between gapx-2 ">
       {user?.token && (
         <div className="block lg:hidden">
           <MobileDrawer theme={theme} />
@@ -59,11 +60,13 @@ const Navbar = () => {
         </Link>
         
       </div>
+   
+       
+      <Logo /> 
+      
+    
 
-      <Logo />
-
-      <div className="flex flex-row items-center gapx-6 gap-2">
-        <Switch />
+      <div className="flex flex-row items-center gapx-10 gap-2">  <Switch  />
         {user?.token ? (
           <UserMenu user={user.user} theme={theme} />
         ) : (

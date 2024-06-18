@@ -1,6 +1,8 @@
 import { Table } from "@mantine/core";
 import { formatNumber, getInitials } from "../utils";
 import moment from "moment";
+import { useTranslation } from 'react-i18next';
+
 
 export const RecentFollowerTable = ({ data, theme }) => {
   const tableData = data?.map(({ _id, createdAt, followerId: follower }) => (
@@ -37,16 +39,17 @@ export const RecentFollowerTable = ({ data, theme }) => {
       <Table.Td>{moment(createdAt).fromNow()}</Table.Td>
     </Table>
   ));
+  const { t } = useTranslation();
 
   return (
     <Table highlightOnHover withTableBorder>
     <Table.Thead>
       <Table.Tr>
-        <Table.Th>Follower</Table.Th>
-        <Table.Th>Join Date</Table.Th>
+        <Table.Th>{t("Followers")}</Table.Th>
+        <Table.Th>{t("Join Date")}</Table.Th>
       </Table.Tr>
     </Table.Thead>
-    {data?.length === 0 && <Table.Caption>No Data Found.</Table.Caption>}
+    {data?.length === 0 && <Table.Caption>{t("No Data Found.")}</Table.Caption>}
     <Table.Tbody>{tableData}</Table.Tbody>
   </Table>
   );
@@ -74,17 +77,17 @@ export const RecentPostTable = ({ data, theme }) => {
       <Table.Td>{moment(el?.createdAt).fromNow()}</Table.Td>
     </Table.Tr>
   ));
-
+  const { t } = useTranslation();
   return (
     <Table highlightOnHover withTableBorder>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Post Title</Table.Th>
-          <Table.Th>Views</Table.Th>
-          <Table.Th>Post Date</Table.Th>
+          <Table.Th>{t("Post Title")}</Table.Th>
+          <Table.Th>{t("Views")}</Table.Th>
+          <Table.Th>{t("Post Date")}</Table.Th>
         </Table.Tr>
       </Table.Thead>
-      {data?.length === 0 && <Table.Caption>No Data Found.</Table.Caption>}
+      {data?.length === 0 && <Table.Caption>{t("No Data Found.")}</Table.Caption>}
       <Table.Tbody>{tableData}</Table.Tbody>
     </Table>
   );

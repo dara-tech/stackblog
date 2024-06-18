@@ -8,6 +8,7 @@ import useStore from "../store";
 import clsx from "clsx";
 import Stats from "../components/Stats";
 import Graph from "../components/Graph";
+import { useTranslation } from "react-i18next";
 
 const Analytics = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -23,6 +24,8 @@ const Analytics = () => {
     mutate(numOfDays);
   }, [numOfDays]);
 
+  const {t} = useTranslation();
+
   return (
     <div className='w-full'>
       <div className='w-full flex items-center justify-between mb-3'>
@@ -32,14 +35,14 @@ const Analytics = () => {
             theme ? "text-white" : "text-slate-700"
           )}
         >
-          Analytics
+          {t("Analytics")}
         </p>
 
         <Select
           // label='Select Range'
-          defaultValue='28 days'
+          defaultValue={t('28 days')}
           placeholder='Range'
-          data={["7 days", "28 days", "90 days", "365 days"]}
+          data={[t("7 days"), t("28 days"),t("100 days"), t("365 days")]}
           onChange={(val) => setNumberOfDays(val?.split(" "[0]))}
         />
       </div>
@@ -48,14 +51,14 @@ const Analytics = () => {
 
       <div className='w-full py-8'>
         <p className='py-5 text-base font-medium '>
-          View Stats for last {numOfDays} days
+          {t("View Stats for last")} {numOfDays} 
         </p>
         <Graph dt={data?.viewStats} />
       </div>
 
       <div className='w-full py-8'>
         <p className='py-5 text-base font-medium '>
-          Followers Stats for last {numOfDays} days
+        {t("Followers Stats for last")} {numOfDays} 
         </p>
         <Graph dt={data?.followersStats} />
       </div>

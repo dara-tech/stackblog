@@ -3,6 +3,8 @@ import { IconArrowDownRight, IconArrowUpRight } from "@tabler/icons-react";
 import { BsEye, BsPostcardHeart } from "react-icons/bs";
 import { FaUsers, FaUsersCog } from "react-icons/fa";
 import { formatNumber } from "../utils";
+import { useTranslation } from "react-i18next";
+
 
 const icons = {
   user: FaUsersCog,
@@ -12,28 +14,29 @@ const icons = {
 };
 
 const Stats = ({ dt }) => {
+  const {t} = useTranslation()
   const data = [
     {
-      title: "TOTAL POST",
+      title: t("TOTAL POST"),
       icon: "post",
       value: formatNumber(dt?.totalPosts ?? 0),
       diff: 34,
     
     },
     {
-      title: "FOLLOWERS",
+      title: t("FOLLOWERS"),
       icon: "users",
       value: formatNumber(dt?.followers ?? 0),
       diff: -13,
     },
     {
-      title: "TOTAL VIEWS",
+      title: t("TOTAL VIEWS"),
       icon: "view",
       value: formatNumber(dt?.totalViews ?? 0),
       diff: 18,
     },
     {
-      title: "TOTAL WRITERS",
+      title: t("TOTAL WRITERS"),
       icon: "user",
       value: formatNumber(dt?.totalWriters ?? 0),
       diff: -30,
@@ -66,7 +69,7 @@ const Stats = ({ dt }) => {
         </Group>
 
         <Text fz='xs' c='dimmed' mt={7}>
-          Compare to previous month
+          {t("Compare to previous month")}
         </Text>
       </Paper>
     );

@@ -9,6 +9,7 @@ import Graph from "../components/Graph";
 import clsx from "clsx";
 import { RecentFollowerTable, RecentPostTable } from "../components/Table";
 import Loading from "../components/Loading";
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -22,14 +23,14 @@ const Dashboard = () => {
   useEffect(() => {
     mutate();
   }, []);
-
+  const { t } = useTranslation();
   return (
     <div className='w-full'>
       <Stats dt={data} />
 
       <div className='w-full'>
         <p className='py-5 text-base font-medium'>
-          View Stats for last 28 days
+          {t("View Stats for last 28 days")}
         </p>
 
         <Graph dt={data?.viewStats} />
@@ -45,7 +46,7 @@ const Dashboard = () => {
               theme ? "text-white" : "text-slate-600"
             )}
           >
-            Recent Folloers
+           {t("Recent Followers")}
           </span>
 
           <RecentFollowerTable data={data?.last5Followers} theme={theme} />
@@ -59,7 +60,7 @@ const Dashboard = () => {
               theme ? "text-white" : "text-slate-600"
             )}
           >
-            Recent 5 Content
+            {t("Recent 5 Content")}
           </span>
 
           <RecentPostTable data={data?.last5Posts} theme={theme} />

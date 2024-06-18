@@ -8,6 +8,8 @@ import { toast, Toaster } from "sonner";
 import { formatNumber, getInitials, updateURL } from "../utils";
 import Loading from "../components/Loading";
 import moment from "moment";
+import { useTranslation } from 'react-i18next';
+
 
 const Followers = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -31,7 +33,7 @@ const Followers = () => {
 
     fetchFollowers();
   }, [page]);
-
+  const { t } = useTranslation();
   return (
     <div className='w-full flex flex-col'>
       <p
@@ -49,10 +51,10 @@ const Followers = () => {
       <Table highlightOnHover withTableBorder className='flex-1'>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>Name</Table.Th>
-            <Table.Th>Account</Table.Th>
-            <Table.Th>Followers</Table.Th>
-            <Table.Th>Joined Date</Table.Th>
+            <Table.Th>{t("Name")}</Table.Th>
+            <Table.Th>{t("Account")}</Table.Th>
+            <Table.Th>{t("Followers")}</Table.Th>
+            <Table.Th>{t("Joined Date")}</Table.Th>
           </Table.Tr>
         </Table.Thead>
 

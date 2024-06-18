@@ -6,7 +6,7 @@ import {
 } from "firebase/storage";
 import { app } from "./firebase";
 
-// export const API_URI = "http://localhost:8800";
+//export const API_URI = "http://localhost:8800";
 export const API_URI = "https://darastack.onrender.com";
 
 export const uploadFile = (setFileURL, setUploadProgress, file) => {
@@ -100,3 +100,4 @@ export const updateURL = ({ page, navigate, location }) => {
 
   return newURL;
 };
+

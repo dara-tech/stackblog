@@ -15,15 +15,8 @@ import {
 import { BsPencilSquare } from "react-icons/bs";
 import { useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
-
-const mockdata = [
-  { icon: IconGauge, label: "Dashboard", to: "dashboard" },
-  { icon: IconDeviceDesktopAnalytics, label: "Analytics", to: "analytics" },
-  { icon: IconCalendarStats, label: "Content", to: "contents" },
-  { icon: IconUser, label: "Followers", to: "followers" },
-  { icon: BsPencilSquare, label: "Create Post", to: "write" },
-  { icon: IconSettings, label: "Settings" },
-];
+import LangSwitch from './langSwitch';
+import { useTranslation } from 'react-i18next';
 
 const NavbarLink = ({ icon: Icon, label, active, onClick }) => {
   return (
@@ -37,7 +30,6 @@ const NavbarLink = ({ icon: Icon, label, active, onClick }) => {
         data-active={active || undefined}
       >
         <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
-
         {label}
       </UnstyledButton>
     </Tooltip>
@@ -45,10 +37,19 @@ const NavbarLink = ({ icon: Icon, label, active, onClick }) => {
 };
 
 const Sidebar = ({ close = () => {} }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  
   const path = location.pathname?.slice(1);
+
+  const mockdata = [
+    { icon: IconGauge, label: t("Dashboard"), to: "dashboard" },
+    { icon: IconDeviceDesktopAnalytics, label: t("Analytics"), to: "analytics" },
+    { icon: IconCalendarStats, label: t("Content"), to: "contents" },
+    { icon: IconUser, label: t("Followers"), to: "followers" },
+    { icon: BsPencilSquare, label: t("Create Post"), to: "write" },
+    { icon: IconSettings, label: t("Settings") },
+  ];
 
   const handleClick = (to) => {
     close();
@@ -65,14 +66,12 @@ const Sidebar = ({ close = () => {} }) => {
   ));
 
   return (
-    <nav className='h-full w-full ms-1 flex flex-col gap-5 px-6 2xl:px-14 '>
-      <p className='w-full py-2 px-12 bg-slate-600 rounded-md '>MENU</p>
-
+    <nav className='h-full w-full ms-1 flex flex-col gap-5 px-6 2xl:px-14 relative'>
+      <p className='w-full flex flex-col py-2 px-12 bg-slate-600 rounded-md '>{t('MENU')}</p>
+      <LangSwitch className="absolute top-2 right-20" />
       <Stack justify='center' gap={10}>
         {links}
       </Stack>
-
-     
     </nav>
   );
 };
